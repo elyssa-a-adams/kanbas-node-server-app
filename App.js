@@ -30,7 +30,8 @@ if (process.env.NODE_ENV !== "development") {
   };
 }
 app.use(session(sessionOptions));
-mongoose.connect("mongodb://localhost:27017/kanbas");
+const CONNECTION_STRING = process.env.DB_CONNECTION_STRING || "mongodb://localhost:27017/kanbas";
+mongoose.connect(CONNECTION_STRING);
 ModuleRoutes(app);
 CourseRoutes(app);
 Lab5(app);
